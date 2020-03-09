@@ -265,6 +265,6 @@ df.for_model.beta <- df.for_model %>% filter(subgroup=="beta")
 
 # Estimate model using limited data
 df.for_model.beta$strain <- factor(df.for_model.beta$strain, levels=c("CoVHKU1", "CoVOC43")) #Set reference strain (first strain listed)
-model11.beta <- lm(log(R_inc_proxy) ~ season*strain + strain*depletion.same_strain + strain*depletion.opp_strain + bs(season_week, degree=3, knots=(c(1:7)*4+1), Boundary.knots=c(1,33)), data=df.for_model.beta)
-model11.beta.robust.vcov <- vcovHC(model11.beta, type="HC3") #Calculate robust variance-covariance matrix
-model11.beta.robust <- coeftest(model11.beta, vcov=model11.beta.robust.vcov)
+model.beta <- lm(log(R_inc_proxy) ~ season*strain + strain*depletion.same_strain + strain*depletion.opp_strain + bs(season_week, degree=3, knots=(c(1:7)*4+1), Boundary.knots=c(1,33)), data=df.for_model.beta)
+model.beta.robust.vcov <- vcovHC(model.beta, type="HC3") #Calculate robust variance-covariance matrix
+model.beta.robust <- coeftest(model.beta, vcov=model.beta.robust.vcov)
